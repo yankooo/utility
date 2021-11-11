@@ -5,7 +5,7 @@
 @Software: GoLand
 @Description: bst
 */
-package binary_search_tree
+package bst
 
 import (
 	"math"
@@ -15,6 +15,15 @@ import (
 type treeNode struct {
 	element     int
 	left, right *treeNode
+}
+
+type BST interface {
+	Size() int
+	Add(e int)
+	Remove(e int)
+	RemoveMin() int
+	RemoveMax() int
+	Search(e int) bool
 }
 
 func newTreeNode(e int) *treeNode {
@@ -29,7 +38,7 @@ type binarySearchTree struct {
 	m    sync.RWMutex
 }
 
-func NewBST() *binarySearchTree {
+func NewBST() BST {
 	return &binarySearchTree{}
 }
 
